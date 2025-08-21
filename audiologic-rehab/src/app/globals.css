@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Global light theme defaults */
+:root { color-scheme: light; }
+
+html, body { height: 100%; }
+
+body {
+  background-color: #ffffff;
+  color: #111827; /* gray-900 */
+}
+
+/* Utilities */
+.text-balance { text-wrap: balance; }
