@@ -9,6 +9,7 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function ServicesPage() {
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
+  const [loadingSlug, setLoadingSlug] = useState<string | null>(null);
   
   const toggleCard = (serviceSlug: string) => {
     setExpandedCards(prev => {
@@ -30,6 +31,27 @@ export default function ServicesPage() {
   };
 
   const categorizedServices = getServicesByCategory();
+
+  const handleBookNow = async (serviceSlug: string) => {
+    try {
+      setLoadingSlug(serviceSlug);
+      const res = await fetch('/api/stripe/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ serviceId: serviceSlug }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || 'Failed to start checkout');
+      if (data?.url) {
+        window.location.href = data.url;
+      }
+    } catch (e) {
+      console.error(e);
+      alert('Sorry, something went wrong starting checkout. Please try again.');
+    } finally {
+      setLoadingSlug(null);
+    }
+  };
 
   return (
     <main className="mx-auto max-w-[1200px] px-6 sm:px-8">
@@ -134,13 +156,14 @@ export default function ServicesPage() {
                     <div className="px-6 pb-6">
                       {svc.ctaVariant === "plans" ? (
                         <div className="flex flex-col items-start gap-2">
-                          <Link 
-                            href={`/book?service=${svc.slug}`} 
-                            className="inline-flex items-center justify-center w-full rounded-md bg-blue-600 text-white px-4 py-2.5 text-sm font-medium hover:bg-blue-700 transition-colors"
-                            onClick={(e) => e.stopPropagation()}
+                          <button
+                            type="button"
+                            className="inline-flex items-center justify-center w-full rounded-md bg-blue-600 text-white px-4 py-2.5 text-sm font-medium hover:bg-blue-700 transition-colors disabled:opacity-60"
+                            onClick={(e) => { e.stopPropagation(); handleBookNow(svc.slug); }}
+                            disabled={loadingSlug === svc.slug}
                           >
-                            Book Now
-                          </Link>
+                            {loadingSlug === svc.slug ? 'Starting checkout...' : 'Book Now'}
+                          </button>
                           <Link 
                             href="/pricing" 
                             className="text-sm underline text-foreground"
@@ -150,13 +173,14 @@ export default function ServicesPage() {
                           </Link>
                         </div>
                       ) : (
-                        <Link 
-                          href={`/book?service=${svc.slug}`} 
-                          className="inline-flex items-center justify-center w-full rounded-md bg-blue-600 text-white px-4 py-2.5 text-sm font-medium hover:bg-blue-700 transition-colors"
-                          onClick={(e) => e.stopPropagation()}
+                        <button
+                          type="button"
+                          className="inline-flex items-center justify-center w-full rounded-md bg-blue-600 text-white px-4 py-2.5 text-sm font-medium hover:bg-blue-700 transition-colors disabled:opacity-60"
+                          onClick={(e) => { e.stopPropagation(); handleBookNow(svc.slug); }}
+                          disabled={loadingSlug === svc.slug}
                         >
-                          Book Now
-                        </Link>
+                          {loadingSlug === svc.slug ? 'Starting checkout...' : 'Book Now'}
+                        </button>
                       )}
                     </div>
                   </article>
@@ -165,6 +189,7 @@ export default function ServicesPage() {
             </div>
           </section>
         ))}
+        
       </div>
     </main>
   );
