@@ -25,6 +25,12 @@ export default function ApproachTimeline() {
             rows.forEach((row, index) => {
               setTimeout(() => {
                 setRevealedCount((prev) => Math.max(prev, index + 1));
+                // When the final row reveals, notify listeners once
+                if (index === rows.length - 1) {
+                  setTimeout(() => {
+                    window.dispatchEvent(new CustomEvent('approach:finished'));
+                  }, 220);
+                }
               }, index * 140);
             });
           }

@@ -54,7 +54,7 @@ export default function ServicesPage() {
   };
 
   return (
-    <main className="mx-auto max-w-[1200px] px-6 sm:px-8">
+    <main className="mx-auto max-w-[1200px] px-6 sm:px-8 pb-24">
       <div className="mt-12 space-y-16">
         {categorizedServices.map((category) => (
           <section key={category.id}>
@@ -158,7 +158,7 @@ export default function ServicesPage() {
                         <div className="flex flex-col items-start gap-2">
                           <button
                             type="button"
-                            className="inline-flex items-center justify-center w-full rounded-md bg-blue-600 text-white px-4 py-2.5 text-sm font-medium hover:bg-blue-700 transition-colors disabled:opacity-60"
+                            className="inline-flex items-center justify-center w-full rounded-md bg-cyan-600 text-white px-4 py-2.5 text-sm font-medium hover:bg-cyan-700 transition-colors disabled:opacity-60"
                             onClick={(e) => { e.stopPropagation(); handleBookNow(svc.slug); }}
                             disabled={loadingSlug === svc.slug}
                           >
@@ -175,7 +175,7 @@ export default function ServicesPage() {
                       ) : (
                         <button
                           type="button"
-                          className="inline-flex items-center justify-center w-full rounded-md bg-blue-600 text-white px-4 py-2.5 text-sm font-medium hover:bg-blue-700 transition-colors disabled:opacity-60"
+                          className="inline-flex items-center justify-center w-full rounded-md bg-cyan-600 text-white px-4 py-2.5 text-sm font-medium hover:bg-cyan-700 transition-colors disabled:opacity-60"
                           onClick={(e) => { e.stopPropagation(); handleBookNow(svc.slug); }}
                           disabled={loadingSlug === svc.slug}
                         >

@@ -5,7 +5,7 @@ import FeaturedBlogCard from "@/components/FeaturedBlogCard";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-24">
       {/* Hero Section */}
       <div 
         className="relative min-h-[calc(100vh-5rem)] md:min-h-[calc(100vh-5rem)] flex items-center bg-cover bg-center bg-no-repeat"
@@ -58,28 +58,35 @@ export default function HomePage() {
             <div className="mb-6">
               <div className="text-xs font-semibold tracking-[0.12em] text-cyan-700 uppercase">Community & Learning</div>
               <h2 id="home-community-title" className="mt-2 text-2xl md:text-3xl font-semibold text-gray-900">Join our Community</h2>
-              <p className="mt-3 text-gray-600 text-sm md:text-base">Progress is faster together. Get small-group practice, personalized plans, and resources you can use every day.</p>
+              <p className="mt-3 mb-8 text-gray-600 text-sm md:text-base">Progress is faster together. Get small-group practice, personalized plans, and resources you can use every day.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <Check className="w-4 h-4 text-cyan-600 mt-0.5" />
-                  <span>Peer support and accountability</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <Check className="w-4 h-4 text-cyan-600 mt-0.5" />
-                  <span>Personalized plans to fit your goals</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <Check className="w-4 h-4 text-cyan-600 mt-0.5" />
-                  <span>Device coaching for real-world outcomes</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <Check className="w-4 h-4 text-cyan-600 mt-0.5" />
-                  <span>Strategies for home, work, and in noise</span>
-                </li>
-              </ul>
+              <div className="flex flex-col justify-between">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <Check className="w-4 h-4 text-cyan-600 mt-0.5" />
+                    <span>Peer support and accountability</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <Check className="w-4 h-4 text-cyan-600 mt-0.5" />
+                    <span>Personalized plans to fit your goals</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <Check className="w-4 h-4 text-cyan-600 mt-0.5" />
+                    <span>Device coaching for real-world outcomes</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <Check className="w-4 h-4 text-cyan-600 mt-0.5" />
+                    <span>Strategies for home, work, and in noise</span>
+                  </li>
+                </ul>
+                
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <Link href="/book" className="inline-flex items-center justify-center rounded-full bg-cyan-600 hover:bg-cyan-700 text-white px-5 py-2.5 text-sm font-semibold">Join Us</Link>
+                  <Link href="/blog" className="text-sm underline text-gray-700">Visit the Blog</Link>
+                </div>
+              </div>
 
               {/* Featured Blog Card */}
               <FeaturedBlogCard
@@ -88,11 +95,6 @@ export default function HomePage() {
                 subtitle="Core principles and practical guidance for improving communication."
                 imagePath="/videos/hero-option-2.jpg"
               />
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link href="/book" className="inline-flex items-center justify-center rounded-full bg-cyan-600 hover:bg-cyan-700 text-white px-5 py-2.5 text-sm font-semibold">Join Us</Link>
-              <Link href="/blog" className="text-sm underline text-gray-700">Visit the Blog</Link>
             </div>
           </div>
         </div>

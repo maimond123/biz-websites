@@ -9,10 +9,10 @@ export default function Footer() {
         <Image
           src="/assets/fulllogo_transparent.png"
           alt="Audiologic Rehab of America full logo"
-          width={480}
-          height={160}
+          width={600}
+          height={200}
           priority
-          className="h-auto w-66 sm:w-72 md:w-88 lg:w-[20rem] xl:w-[32rem] select-none pointer-events-none"
+          className="h-auto w-72 sm:w-80 md:w-96 lg:w-[24rem] xl:w-[36rem] select-none pointer-events-none"
         />
 
         <nav className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-gray-500">
