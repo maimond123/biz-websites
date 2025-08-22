@@ -38,8 +38,10 @@ export default function HomePage() {
               
               {/* CTA Button */}
               <Link 
-                href="/book" 
+                href="https://calendly.com/maimondavid553/alumintel-support" 
                 className="inline-flex items-center justify-center bg-cyan-600 hover:bg-cyan-700 text-white px-6 md:px-8 py-3 rounded-full text-base md:text-lg font-semibold transition-colors shadow-lg"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Book Demo
               </Link>

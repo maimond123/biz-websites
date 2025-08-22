@@ -52,8 +52,10 @@ export default function NavBar() {
             
             {/* Book Online Button */}
             <Link 
-              href="/book" 
+              href="https://calendly.com/maimondavid553/alumintel-support" 
               className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2.5 rounded-full text-base font-semibold transition-colors shadow-md transform-gpu hover:scale-105 active:scale-95"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Demo Today
             </Link>
